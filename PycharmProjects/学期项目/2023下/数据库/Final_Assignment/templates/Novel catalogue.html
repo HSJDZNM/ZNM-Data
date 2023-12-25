@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍目录</title>
+    <link rel="stylesheet" href="/static/Novel catalogue.css">
+</head>
+
+<body>
+    <h1>{{ book_name[0][0] }}</h1>
+
+    <div class="back">
+        <a href="/">返回书籍目录</a>
+    </div>
+    
+        <table class="table">
+            <tr>
+            {% for name in chapter_name %}
+                {% if name[2] == 1 %}
+                    <td>
+                        <a class="chapter" href="/Next/{{ name[1] }}">{{ name[0] }}</a>
+                    </td>
+                {% elif name[2] == max_chapter_num[0][0] %}
+                    <td>
+                        <a class="chapter" href="/Last/{{ name[1] }}">{{ name[0] }}</a>
+                    </td>
+                {% else %}
+                    <td>
+                        <a class="chapter" href="/Two/{{ name[1] }}">{{ name[0] }}</a>
+                    </td>
+                {% endif %}
+
+                {% if loop.index % 2 == 0 and not loop.last %}
+                    </tr><tr>
+                {% endif %}
+            {% endfor %}
+            </tr>
+        </table>
+    
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中心章</title>
+    <link rel="stylesheet" href="/static/Two chapters.css">
+</head>
+<body>
+    <h1 class="h1">{{ title }}</h1>
+
+    {% if chapter_num == 2 %}
+        <div class="back">
+            <a class="left-element" href="/Next/{{previous_chapter_id}}">上一章</a>
+            <a class="center-element" href="/Novel/{{book_id}}">返回章节目录</a>
+            <a class="right-element" href="/Two/{{next_chapter_id}}">下一章</a>
+        </div>
+    {% elif chapter_num == max_chapter_num %}
+        <div class="back">
+            <a class="left-element" href="/Two/{{previous_chapter_id}}">上一章</a>
+            <a class="center-element" href="/Novel/{{book_id}}">返回章节目录</a>
+            <a class="right-element" href="/Last/{{next_chapter_id}}">下一章</a>
+        </div>
+    {% else %}
+        <div class="back">
+            <a class="left-element" href="/Two/{{previous_chapter_id}}">上一章</a>
+            <a class="center-element" href="/Novel/{{book_id}}">返回章节目录</a>
+            <a class="right-element" href="/Two/{{next_chapter_id}}">下一章</a>
+        </div>
+    {% endif %}
+        
+    <div>
+        {{ content|safe }}
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.table a {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+}
+
+.back {
+    width: 100%;
+    height: 100px;
+    background-color: aquamarine;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 水平居中 */
+}
+
+.back a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <script src="./js/vue2.0/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        .flex{
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 26px;
+        }
+        .login_div{
+            width: 20%;
+            height: 260px;
+            background-color: bisque;
+            margin: 0,auto;
+            text-align: center;
+            padding-left: 52px;
+            padding-top: 26px;
+            margin-left: 40%;
+            margin-top: 20%;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="znmapp">
+        <div class="login_div">
+            <h2>{{hello}}</h2>
+
+            <div class="flex">
+                <div>用户名:</div>
+                <div><el-input v-model="user.name" placeholder="输入用户名,老弟" clearable maxlength="10" prefix-icon = "el-icon-s-custom" show-word-limit></el-input></div>
+            </div>
+
+            <div class="flex">
+                <div>密&nbsp码&nbsp:&nbsp</div>
+                <div><div><el-input v-model="user.pwd" placeholder="输入密码,老弟" clearable show-password maxlength="20" prefix-icon = "el-icon-lock"></el-input></div></div>
+            </div>
+
+            <div>
+                <el-button type="success" icon = "el-icon-refresh" round @click="login_div()">登录</el-button>
+                <el-button type="warning" icon = "el-icon-refresh-left"round @click="reset_div()">重置</el-button>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:"#znmapp",
+            data() {
+                return {
+                    hello: '智能猫',
+                    user:{
+                        name:"znm",
+                        pwd:"123"
+                    }
+                };
+            },
+            methods: {
+                login_div(){
+                    // alert("准备起飞");
+                    if(this.user.name==""){
+                        // alert("输入用户名啊！傻鸟！")
+                        this.$message({
+                            type:"warning",
+                            // type:"error",
+                            message:"输入用户名啊！傻鸟！",
+                            center:true
+                        });
+                    }else if(this.user.pwd==""){
+                        this.$message({
+                            type:"warning",
+                            message:"输入密码啊！傻鸟！",
+                            center:true
+                    });
+                }else{
+                    if(this.user.name=="znm" && this.user.pwd=="123"){
+                        window.location.href="main2.html"
+                    }else{
+                        this.$message({
+                            type:"error",
+                            message:"用户名或密码错误，请重新输入",
+                            center:true
+                        })
+                        // setTimeout(() => {
+                        //     location.reload();
+                        // }, 2000);
+                        // alert("用户名或密码错误，请重新输入")
+                    }
+                }
+            },
+            reset_div(){
+                this.user={};
+            }
+        }   
+    })
+</script>
+
+
+</body>
+</html>

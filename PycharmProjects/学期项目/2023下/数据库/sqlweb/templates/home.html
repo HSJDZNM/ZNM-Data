@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/static/web_ico.png" type="image/png">
+        <title>享受小说😊</title>
+        <style>
+            body {
+                text-align: center;
+                font-family: Arial, sans-serif;
+                background-color: #7a7a7a; /* 黑色背景 */
+                color: #000; /* 黑色文字 */
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                background-color: #000; /* 黑色标题栏背景 */
+                color: #fff; /* 白色标题文字 */
+                padding: 10px 0;
+                font-size: 24px;
+            }
+            h2 {
+                margin: 0; /* 移除标题的默认外边距 */
+            }
+            table {
+                width: 80%; /* 表格宽度调整为80% */
+                margin: 20px auto 40px; /* 调整表格上下边距 */
+                border-collapse: separate; /* 分离单元格边框 */
+                border-spacing: 10px 10px; /* 增加表格间距 */
+                background-color: rgba(255, 255, 255, 0.8); /* 设置表格背景为白色半透明 */
+            }
+            td, th {
+                border: none; /* 移除边框 */
+                padding: 10px;
+                text-align: center;
+            }
+            img {
+                width: auto;
+                height: 150px; /* 图片高度固定，宽度自适应 */
+                transition: box-shadow 0.3s ease; /* 添加过渡效果 */
+            }
+            img:hover {
+                box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); /* 鼠标悬停时添加阴影 */
+            }
+            .author {
+                font-size: 0.8em;
+                color: gray;
+            }
+            .price {
+                color: darkblue;
+                font-size: 12px;
+            }
+            a {
+                text-decoration: none;
+                color: #000; /* 链接为黑色 */
+            }
+            a:hover {
+                color: darkblue; /* 鼠标悬停时颜色变为深蓝 */
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h2>小说😊市场</h2>
+        </header>
+        <table>
+            <tr>
+            {% for book in books %}
+                <td>
+                    <a href="/book/{{ book.BookID }}/" target="_blank"><img src="/static/cover/{{ book.BookID }}.png" alt="小说封面"></a>
+                    <a href="/book/{{ book.BookID }}/" target="_blank"><h3>{{ book.BookTitle }}</h3></a>
+                    <a class="author" href="/author/{{book.AuthorID}}/" target="_blank">{{ book.AuthorName }}</a>
+                    <p>标签: {{ book.TagName }}</p>
+                    <p class="price">价格: 0 硬币</p>
+                </td>
+                {% if loop.index % 4 == 0 and not loop.last %}
+                    </tr><tr>
+                {% endif %}
+            {%   %}
+            </tr>
+        </table>
+    </body>
+</html>

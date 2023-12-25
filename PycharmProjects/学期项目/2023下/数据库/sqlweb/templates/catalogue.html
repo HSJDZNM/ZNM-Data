@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/web_ico.png/" type="image/png">
+    <title>目录📜 {{ BookTitle }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            display: block; /* 使链接充满整个列表项 */
+            text-decoration: none;
+            color: #333;
+            background-color: #ddd; /* 按钮背景色 */
+            padding: 10px;
+            border-radius: 5px; /* 轻微的圆角 */
+            transition: background-color 0.3s ease; /* 平滑过渡效果 */
+        }
+        a:hover {
+            background-color: #ccc; /* 鼠标悬停时的背景色 */
+        }
+        .header {
+            width: 100%;
+            padding: 20px 0;
+            background-color: #f0f0f0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+
+        /* js部分 */
+        .chapter-btn {
+            display: block;
+            width: 60%; /* 减少按钮的宽度 */
+            max-width: 550px; /* 设置一个最大宽度 */
+            margin: 10px auto;
+            padding: 10px 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .chapter-btn:hover {
+            background-color: #ccc;
+        }
+        #searchBox {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        {{ BookTitle }}
+    </div>
+    <input type="text" id="searchBox" placeholder="搜索章节...">
+    <!-- 章节列表 -->
+    <div id="chapterList">
+        <!-- 章节按钮 -->
+        {% for chapter in chapters %}
+            <div class="chapter-btn" onclick="location.href='/read/{{ chapter.ChapterID }}/';">
+                {{ chapter.ChapterTitle }}
+            </div>
+        {% endfor %}
+    </div>
+    <script>
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            var searchValue = e.target.value.toLowerCase();
+            var chapters = document.getElementsByClassName('chapter-btn');
+            for (var i = 0; i < chapters.length; i++) {
+                var title = chapters[i].textContent || chapters[i].innerText;
+                if (title.toLowerCase().indexOf(searchValue) > -1) {
+                    chapters[i].style.display = '';
+                } else {
+                    chapters[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

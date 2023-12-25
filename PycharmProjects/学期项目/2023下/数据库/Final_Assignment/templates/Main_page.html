@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页面</title>
+    <link rel="stylesheet" href="/static/Main_page.css">
+</head>
+<body>
+        <h1 class="station_name">文学天地</h1>
+
+        <div>
+            <div class="show_book">
+                <a href="/Novel/1"><img src="/static/picture/红楼梦.jpg"></a><br>
+                <a href="/Novel/1">红楼梦</a>
+            </div>
+
+            <div class="show_book">
+                <a href="/Novel/2"><img src="/static/picture/水浒传.jpg"></a><br>
+                <a href="/Novel/2">水浒传</a>
+            </div>
+
+            <div class="show_book">
+                <a href="/Novel/3"><img src="/static/picture/三国演义.jpg"></a><br>
+                <a href="/Novel/3">三国演义</a>
+            </div>
+        </div>
+                
+        <div class="navigation_bar">
+            <a class="" href="/Other/玄幻奇幻">玄幻</a>
+            <a class="" href="/Other/武侠仙侠">武侠</a>
+            <a class="" href="/Other/都市言情">都市</a>
+            <a class="" href="/Other/历史军事">历史</a>
+            <a class="" href="/Other/网游竞技">网游</a>
+            <a class="" href="/Other/科幻灵异">科幻</a>
+            <a class="" href="/Other/女生频道">女生</a>
+            <a class="" href="/Other/国学经典">国学</a>
+        </div>      
+
+        <table class="table">
+            <tr>
+            {% for one_book in all_book_list %}     # 这是一个循环，将路由里的参数传入进来，并进行循环，应为他在{%%}内部所以参数不用加两个大括号
+                            <td class="tag_book">
+                    <a href="/Novel/{{one_book.book_id}}" target="_blank">      # 这里的href改成路由，两个大括号代表“one_book.book_id”是个参数
+                        <img src="/static/picture/{{one_book.book_name}}.jpg" style="width: 170px;height: 240px;" alt="小说封面">
+                    </a>
+                    <a href="/Novel/{{one_book.book_id}}" target="_blank">
+                        <h3>{{ one_book.book_name }}</h3>
+                    </a>
+                </td>
+                {% if loop.index % 4 == 0 and not loop.last %}      # 每四本换一行
+                    </tr><tr>
+                {% endif %}
+            {% endfor %}
+            </tr>
+        </table>
+    
+</body>
+</html>

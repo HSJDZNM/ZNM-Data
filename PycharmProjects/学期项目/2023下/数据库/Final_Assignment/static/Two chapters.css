@@ -1,0 +1,41 @@
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.back {
+    width: 100%;
+    height: 100px;
+    background-color: aquamarine;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-element, .center-element, .right-element {
+    flex: 1; /* 让三个元素平分父容器的宽度 */
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+
+.left-element {
+    order: 1; /* 控制元素的顺序，1 表示在第一个位置 */
+}
+
+.center-element {
+    order: 2; /* 控制元素的顺序，2 表示在第二个位置 */
+}
+
+.right-element {
+    order: 3; /* 控制元素的顺序，3 表示在第三个位置 */
+}

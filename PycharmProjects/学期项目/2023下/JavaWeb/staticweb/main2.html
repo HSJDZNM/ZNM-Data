@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页面</title>
+    <script src="./js/vue2.0/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<style>
+    .input_w{
+        width: 126px;
+    }
+    .query_div{
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 26px;
+    }
+    .tablest{
+        width: 80%;
+        margin-top: 31px;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="stmain">
+        {{st}}
+
+        <div class = "query_div">
+            <span>
+                <el-input class="input_w" v-loading="st.stid" placeholder="学号条件" prefix-icon="el-icon-search"></el-input>
+                <el-input class="input_w" v-loading="st.stname" placeholder="姓名条件" prefix-icon="el-icon-search"></el-input>
+                <el-input class="input_w" v-loading="st.stmajor" placeholder="专业条件" prefix-icon="el-icon-search"></el-input>
+            </span>
+            <p></p>
+
+            <span></span>
+                <el-input class="input_w" v-loading="st.stage_start" placeholder="开始年龄" prefix-icon="el-icon-search"></el-input>
+                <el-input class="input_w" v-loading="st.stage_end" placeholder="结束年龄" prefix-icon="el-icon-search"></el-input>
+                <el-radio-group v-model="st.stgender">
+                  <el-radio label="男"></el-radio>
+                  <el-radio label="女"></el-radio>
+                </el-radio-group>
+
+            </span>
+            <p></p>
+
+            <span>
+                <el-button type="primary">查询</el-button>
+                <el-button type="success">重置</el-button></el-button>
+            </span>
+        </div>
+
+        <div class="tablest">
+            <el-table :data="tableData" stripe >
+              <el-table-column type="selection"></el-table-column> 
+              <el-table-column label="学生学号" prop="stid" width="200"></el-table-column>
+              <el-table-column label="学生姓名" prop="stname" width="230"></el-table-column>
+              <el-table-column label="学生性别" prop="stgender" width="200"></el-table-column>
+              <el-table-column label="学生专业" prop="stmajor"></el-table-column>
+              <el-table-column label="操作">
+                <template>
+                    <el-button type="text">编辑</el-button>
+                    <el-button type="text">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el:"#stmain",
+            data() {
+                return {
+                    st:{
+                        stid:"", //学生学号
+                        stname:"", //学生姓名
+                        stgender:"", //学生性别
+                        stage_start:"", //学生入学日期
+                        stage_end:"", //学生毕业日期
+                        stmajor:"", //学生专业
+                    }, 
+                    tableData: [
+                    {
+                        stid:"0001",
+                        stname:"张三",
+                        stgender:"男",
+                        stage:"16",
+                        stmajor:"人工智能"
+                    },
+                    {
+                        stid:"0002",
+                        stname:"李四",
+                        stgender:"女",
+                        stage:"19",
+                        stmajor:"大数据技术"
+                    },
+                    {
+                        stid:"0003",
+                        stname:"王五",
+                        stgender:"男",
+                        stage:"17",
+                        stmajor:"商务文秘"
+                    },
+                    {
+                        stid:"0004",
+                        stname:"麻六",
+                        stgender:"男",
+                        stage:"17",
+                        stmajor:"计算机网络"
+                    },
+                    {
+                        stid:"0005",
+                        stname:"张美丽",
+                        stgender:"女",
+                        stage:"18",
+                        stmajor:"物联网技术"
+                    },
+                    {
+                        stid:"0006",
+                        stname:"刘德华",
+                        stgender:"男",
+                        stage:"58",
+                        stmajor:"云计算技术"
+                    },
+                    {
+                        stid:"999999999",
+                        stname:"黄凯",
+                        stgender:"武装直升飞机",
+                        stage:"196",
+                        stmajor:"人工智障"
+                    }]
+                };
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空间🚀 {{ author_name }}</title>
+    <link rel="icon" href="/static/web_ico.png/" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 设置页面高度为视窗高度 */
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 30%; /* 缩小卡片尺寸 */
+            background-color: #fff; /* 白色背景 */
+            border-radius: 5px; /* 轻微的圆角 */
+            display: flex;
+            justify-content: space-around; /* 调整间距 */
+            padding: 20px;
+            flex-direction: column; /* 设置内容为列布局 */
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+        }
+        .left-column, .right-column {
+            width: 100%; /* 设置列宽度为100% */
+        }
+        h1, h3, p {
+            color: #333; /* 深灰色文字 */
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="card">
+        <div class="left-column">
+            <h1>{{ author_name }}</h1>
+        </div>
+        <div class="right-column">
+            <p>作为一名热情洋溢的作家，我致力于通过文字探索丰富的情感世界和多彩的人生体验。我的写作旅程始于对语言的深刻爱好和对人类故事的无尽好奇。无论是小说、诗歌还是散文，我都致力于捕捉生活中的细微之处，并将这些瞬间转化为能触动人心的文字。</p> <!-- 替换为具体的作者简介 -->
+        </div>
+    </div>
+</body>
+</html>
